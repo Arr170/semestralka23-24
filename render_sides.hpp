@@ -7,7 +7,7 @@
 #define GREEN  0.0f, 1.0f, 0.0f
 #define BLUE   0.0f, 0.0f, 1.0f
 #define RED    1.0f, 0.0f, 0.0f
-#define ORANGE 0.7f, 0.3f, 0.0f
+#define ORANGE 0.8f, 0.3f, 0.0f
 
 #define MARGIN 0.01f
 #define STICKER_SIZE 1.0f

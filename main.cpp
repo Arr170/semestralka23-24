@@ -11,7 +11,8 @@
 char title[] = "3D Shapes with animation";
 GLfloat rotationAngle = 15.0f;
 int refreshMills = 10; // refresh interval in milliseconds [NEW]
-Rendered_cube cube; 
+Rendered_cube cube;
+GLfloat rot_x = 0.0f, rot_y = 0.0f; 
 
 /* Initialize OpenGL Graphics */
 void initGL()
@@ -35,8 +36,8 @@ void display()
     // Render a color-cube consisting of 6 quads with different colors
     glLoadIdentity();                     // Reset the model-view matrix
     glTranslatef(-1.55f, -1.55f, -10.0f); // Move right and into the screen
-    glRotatef(rotationAngle, 0.5f, 0.5f, 0.0f);
-    //glRotatef(rotationAngle, 1.0f, 1.0f, 0.0f); 
+    glRotatef(rot_y, 0.0f, 1.0f, 0.0f);
+    glRotatef(rot_x, 1.0f, 0.0f, 0.0f); 
 
     glBegin(GL_QUADS); // Begin drawing the color cube with 6 quads
     
@@ -51,7 +52,7 @@ void display()
     glutSwapBuffers(); // Swap the front and back frame buffers (double buffering)
     //glRotatef(rotationAngle, 0.0f, 1.0f, 0.0f);
     // Update the rotational angle after each refresh [NEW]
-    rotationAngle -= 0.4f;
+    //rotationAngle = -0.4f;
 }
 
 /* Called back when timer expired [NEW] */
@@ -80,6 +81,21 @@ void reshape(GLsizei width, GLsizei height)
     gluPerspective(45.0f, aspect, 0.1f, 100.0f);
 }
 void keyboard_func_wrapper(unsigned char key, int x, int y){
+    if(key == 'k'){
+        rot_x += 5.0f;
+        std::cout<<"y minus"<<rot_y<<"\n";
+    }
+    else if(key == 'i'){
+        rot_x -= 5.0f;
+    }
+    else if(key == 'j'){
+        rot_y += 5.0f;
+        std::cout<<"x minus\n";
+    }
+    else if(key == 'l'){
+        rot_y -= 5.0f;
+    }
+    else
     cube.turn(key);
 }
 /* Main function: GLUT runs as a console application starting at main() */
