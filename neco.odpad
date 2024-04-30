@@ -1,101 +1,22 @@
-#include <GL/glut.h> // GLUT, include glu.h and gl.h
-
-/* Global variables */
-char title[] = "3D Shapes with animation";
-GLfloat rotationAngle = 0.0f; // Initial rotational angle
-int refreshMills = 10;        // Refresh interval in milliseconds
-
-#define MARGIN 0.05f
+#define MARGIN 0.01f
 #define STICKER_SIZE 1.0f
+// starting coord for green side
 #define WGO_ORIGIN_X 0.0f
 #define WGO_ORIGIN_Y 0.0f
 #define WGO_ORIGIN_Z 0.0f
-
-/* Initialize OpenGL Graphics */
-void initGL()
-{
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);              // Set background color to black and opaque
-    glClearDepth(0.5f);                                // Set background depth to farthest
-    glEnable(GL_DEPTH_TEST);                           // Enable depth testing for z-culling
-    glDepthFunc(GL_LEQUAL);                            // Set the type of depth-test
-    glShadeModel(GL_SMOOTH);                           // Enable smooth shading
-    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST); // Nice perspective corrections
-}
-
-/* Handler for window-repaint event. Called back when the window first appears and
-   whenever the window needs to be re-painted. */
-void display()
-{
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear color and depth buffers
-    glMatrixMode(GL_MODELVIEW);                         // To operate on model-view matrix
-
-    // Render a color-cube consisting of 6 quads with different colors
-    glLoadIdentity();                       // Reset the model-view matrix
-    glTranslatef(-1.55f, -1.55f, -10.0f);   // Move right and into the screen
-    glRotatef(rotationAngle, 1.0f, 0.0f, 0.0f); // Rotate around X-axis
-
-    // Draw the grid of squares
-    glBegin(GL_QUADS);
-    for (int j = 0; j < 3; j++) { // x coord
-        for (int i = 0; i < 3; i++) { // y coord
-            float x1, y1, x2, y2;
-
-            glColor3f(0.0f, 1.0f, 0.0f); // Green
-
-            x1 = WGO_ORIGIN_X + (MARGIN + STICKER_SIZE) * j;
-            y1 = WGO_ORIGIN_Y + (MARGIN + STICKER_SIZE) * i;
-            x2 = x1 + STICKER_SIZE;
-            y2 = y1 + STICKER_SIZE;
-
-            // Draw the square
-            glVertex3f(x1, y1, WGO_ORIGIN_Z); // lt
-            glVertex3f(x2, y1, WGO_ORIGIN_Z); // rt
-            glVertex3f(x2, y2, WGO_ORIGIN_Z); // rb
-            glVertex3f(x1, y2, WGO_ORIGIN_Z); // lb
-        }
-    }
-    glEnd();
-
-    glutSwapBuffers(); // Swap the front and back frame buffers (double buffering)
-}
-
-/* Called back when timer expired */
-void timer(int value)
-{
-    rotationAngle += 1.0f; // Increment rotation angle
-    if (rotationAngle > 360.0f) // Keep rotation angle within 360 degrees
-        rotationAngle -= 360.0f;
-    
-    glutPostRedisplay();                   // Post re-paint request to activate display()
-    glutTimerFunc(refreshMills, timer, 0); // Next timer call milliseconds later
-}
-
-/* Handler for window re-size event. Called back when the window first appears and
-   whenever the window is re-sized with its new width and height */
-void reshape(GLsizei width, GLsizei height)
-{
-    if (height == 0)
-        height = 1; // To prevent divide by 0
-    GLfloat aspect = (GLfloat)width / (GLfloat)height;
-
-    glViewport(0, 0, width, height);
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    gluPerspective(45.0f, aspect, 0.1f, 100.0f);
-}
-
-/* Main function */
-int main(int argc, char **argv)
-{
-    glutInit(&argc, argv);            // Initialize GLUT
-    glutInitDisplayMode(GLUT_DOUBLE); // Enable double buffered mode
-    glutInitWindowSize(640, 480);     // Set the window's initial width & height
-    glutInitWindowPosition(50, 50);   // Position the window's initial top-left corner
-    glutCreateWindow(title);          // Create window with the given title
-    glutDisplayFunc(display);         // Register callback handler for window re-paint event
-    glutReshapeFunc(reshape);         // Register callback handler for window re-size event
-    initGL();                         // Our own OpenGL initialization
-    glutTimerFunc(0, timer, 0);       // First timer call immediately
-    glutMainLoop();                   // Enter the infinite event-processing loop
-    return 0;
-}
+// staring coord for blue side
+#define WBR_ORIGIN_X 3.0f + MARGIN*2
+#define WBR_ORIGIN_Y 0.0f
+#define WBR_ORIGIN_Z -(3.0f + MARGIN*2)
+// starting coord for white side
+#define WBO_ORIGIN_X 0.0f
+#define WBO_ORIGIN_Y 3.0f + (MARGIN * 2)
+#define WBO_ORIGIN_Z -(3.0f + MARGIN * 2)
+// starting coord for yellow side
+#define YGO_ORIGIN_X 0.0f
+#define YGO_ORIGIN_Y 0.0f
+#define YGO_ORIGIN_Z 0.0f
+// starting coord for red side
+#define WGR_ORIGIN_X 3.0f + (MARGIN * 2)
+#define WGR_ORIGIN_Y 3.0f + (MARGIN * 2)
+#define WGR_ORIGIN_Z 0.0f

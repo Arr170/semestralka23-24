@@ -35,7 +35,7 @@ void display()
 
     // Render a color-cube consisting of 6 quads with different colors
     glLoadIdentity();                     // Reset the model-view matrix
-    glTranslatef(-1.55f, -1.55f, -10.0f); // Move right and into the screen
+    glTranslatef(0.0f, 0.0f, -10.0f); // Move right and into the screen
     glRotatef(rot_y, 0.0f, 1.0f, 0.0f);
     glRotatef(rot_x, 1.0f, 0.0f, 0.0f); 
 

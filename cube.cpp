@@ -182,7 +182,7 @@ void Cube::turn_char(unsigned char user_move, int x, int y)
             // moving D line
             for (int i = 0; i < 3; i++)
             {
-                this->rotate_colors(&this->G_side[2][i], &this->R_side[2][i], &this->B_side[2][2-i], &this->O_side[2][i]); //blue is mirrored
+                this->rotate_colors(&this->G_side[2][i], &this->R_side[2][i], &this->B_side[0][i], &this->O_side[2][i]); //blue is mirrored
             }
 
             // moving D face
@@ -193,7 +193,7 @@ void Cube::turn_char(unsigned char user_move, int x, int y)
             // moving U line
             for (int i = 0; i < 3; i++)
             {
-                this->rotate_colors(&this->O_side[0][i], &this->B_side[0][i], &this->R_side[0][i], &this->G_side[0][i]); //blue is mirrored
+                this->rotate_colors(&this->O_side[0][i], &this->B_side[2][i], &this->R_side[0][i], &this->G_side[0][i]); //blue is mirrored
             }
 
             // moving U face
@@ -207,7 +207,7 @@ void Cube::turn_char(unsigned char user_move, int x, int y)
             // moving R line
             for (int i = 0; i < 3; i++)
             {
-                this->rotate_colors(&this->G_side[i][2], &this->W_side[i][2], &this->B_side[2-i][0], &this->Y_side[i][2]);//blue is mirrored
+                this->rotate_colors(&this->G_side[i][2], &this->W_side[i][2], &this->B_side[i][0], &this->Y_side[i][2]);//blue is mirrored
             }
             // moving R face
             this->rotate_face(this->R_side);
@@ -217,7 +217,7 @@ void Cube::turn_char(unsigned char user_move, int x, int y)
             // moving L line
             for (int i = 0; i < 3; i++)
             {
-                this->rotate_colors(&this->Y_side[i][0], &this->B_side[2-i][2], &this->W_side[i][0], &this->G_side[i][0]);//blue is mirrored
+                this->rotate_colors(&this->Y_side[i][0], &this->B_side[i][2], &this->W_side[i][0], &this->G_side[i][0]);//blue is mirrored
             }
             // moving L face
             this->rotate_face(this->O_side);
@@ -240,7 +240,7 @@ void Cube::turn_char(unsigned char user_move, int x, int y)
                 this->rotate_colors(&this->W_side[0][i], &this->O_side[2-i][0], &this->Y_side[2][2-i], &this->R_side[i][2]);
             }
             // moving B face
-            this->rotate_face(this->B_side);
+            this->rotate_face_counter(this->B_side);
         }
 
         if (user_move == 'W' || user_move == 'S')
@@ -261,7 +261,7 @@ void Cube::turn_char(unsigned char user_move, int x, int y)
                 // moving U line
                 for (int i = 0; i < 3; i++)
                 {
-                    this->rotate_colors(&this->G_side[0][i], &this->R_side[0][i], &this->B_side[0][i], &this->O_side[0][i]); //blue is mirrored
+                    this->rotate_colors(&this->G_side[0][i], &this->R_side[0][i], &this->B_side[2][i], &this->O_side[0][i]); //blue is mirrored
                 }
 
                 // moving U face
@@ -275,7 +275,7 @@ void Cube::turn_char(unsigned char user_move, int x, int y)
                 // moving R line
                 for (int i = 0; i < 3; i++)
                 {
-                    this->rotate_colors(&this->Y_side[i][2], &this->B_side[2-i][0], &this->W_side[i][2], &this->G_side[i][2]);//blue is mirrored
+                    this->rotate_colors(&this->Y_side[i][2], &this->B_side[i][0], &this->W_side[i][2], &this->G_side[i][2]);//blue is mirrored
                 }
                 // moving R face
                 this->rotate_face_counter(this->R_side);
@@ -285,7 +285,7 @@ void Cube::turn_char(unsigned char user_move, int x, int y)
                 // moving L line
                 for (int i = 0; i < 3; i++)
                 {
-                    this->rotate_colors(&this->G_side[i][0], &this->W_side[i][0], &this->B_side[2-i][2], &this->Y_side[i][0]);//blue is mirrored
+                    this->rotate_colors(&this->G_side[i][0], &this->W_side[i][0], &this->B_side[i][2], &this->Y_side[i][0]);//blue is mirrored
                 }
                 // moving L face
                 this->rotate_face_counter(this->O_side);
@@ -308,7 +308,7 @@ void Cube::turn_char(unsigned char user_move, int x, int y)
                     this->rotate_colors(&this->R_side[i][2], &this->Y_side[2][2-i], &this->O_side[2-i][0], &this->W_side[0][i]);
                 }
                 // moving B face
-                this->rotate_face_counter(this->B_side);
+                this->rotate_face(this->B_side);
             }
         }
     }

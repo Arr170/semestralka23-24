@@ -2,6 +2,7 @@
 #include "cube.hpp"
 #include <iostream>
 
+// rgb colors to be iserted in glcolors3f()
 #define WHITE  1.0f, 1.0f, 1.0f
 #define YELLOW 1.0f, 1.0f, 0.0f
 #define GREEN  0.0f, 1.0f, 0.0f
@@ -9,28 +10,39 @@
 #define RED    1.0f, 0.0f, 0.0f
 #define ORANGE 0.8f, 0.3f, 0.0f
 
+// space between stickers
 #define MARGIN 0.01f
+
+// size of one sticker
 #define STICKER_SIZE 1.0f
+
+// needet to move center of cube in origin
+#define CORRECTION (3 * STICKER_SIZE + 2 * MARGIN) / 2
+
 // starting coord for green side
-#define WGO_ORIGIN_X 0.0f
-#define WGO_ORIGIN_Y 0.0f
-#define WGO_ORIGIN_Z 0.0f
+#define WGO_ORIGIN_X 0.0f - CORRECTION
+#define WGO_ORIGIN_Y 0.0f - CORRECTION
+#define WGO_ORIGIN_Z 0.0f + CORRECTION
+
 // staring coord for blue side
-#define WBR_ORIGIN_X 3.0f + MARGIN*2
-#define WBR_ORIGIN_Y 0.0f
-#define WBR_ORIGIN_Z -(3.0f + MARGIN*2)
+#define WBR_ORIGIN_X 3.0f + MARGIN * 2 - CORRECTION
+#define WBR_ORIGIN_Y 0.0f - CORRECTION
+#define WBR_ORIGIN_Z -(3.0f + MARGIN * 2) + CORRECTION
+
 // starting coord for white side
-#define WBO_ORIGIN_X 0.0f
-#define WBO_ORIGIN_Y 3.0f + (MARGIN * 2)
-#define WBO_ORIGIN_Z -(3.0f + MARGIN * 2)
+#define WBO_ORIGIN_X 0.0f - CORRECTION
+#define WBO_ORIGIN_Y 3.0f + (MARGIN * 2) - CORRECTION
+#define WBO_ORIGIN_Z -(3.0f + MARGIN * 2) + CORRECTION
+
 // starting coord for yellow side
-#define YGO_ORIGIN_X 0.0f
-#define YGO_ORIGIN_Y 0.0f
-#define YGO_ORIGIN_Z 0.0f
+#define YGO_ORIGIN_X 0.0f - CORRECTION
+#define YGO_ORIGIN_Y 0.0f - CORRECTION
+#define YGO_ORIGIN_Z 0.0f + CORRECTION
+
 // starting coord for red side
-#define WGR_ORIGIN_X 3.0f + (MARGIN * 2)
-#define WGR_ORIGIN_Y 3.0f + (MARGIN * 2)
-#define WGR_ORIGIN_Z 0.0f
+#define WGR_ORIGIN_X 3.0f + (MARGIN * 2) - CORRECTION
+#define WGR_ORIGIN_Y 3.0f + (MARGIN * 2) - CORRECTION
+#define WGR_ORIGIN_Z 0.0f + CORRECTION
 
 class Rendered_cube{
     Cube * cube;
@@ -138,7 +150,7 @@ void Rendered_cube::render_back()
         { // y coord
             float x1, y1, x2, y2, symbolX, symbolY;
 
-            color_switch(cube->B_side[2-i][j]->name);
+            color_switch(cube->B_side[i][j]->name);
 
             x1 = WBR_ORIGIN_X - (MARGIN + STICKER_SIZE) * j;
             y1 = WBR_ORIGIN_Y + (MARGIN + STICKER_SIZE) * i;
