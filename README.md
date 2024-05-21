@@ -15,38 +15,21 @@ Ovládání kostky je popsano v níže uvedené tabulce, stisknutí klávesy je 
 |Klávesa|WCA notace|
 |:-----:|:--------:|
 |D      |R         |  
-SHIFT + D
-R’
-A
-L
-SHIFT + A
-L’
-W
-U
-SHIFT + W
-U’
-S
-D
-SHIFT + S
-D’
-Q
-F
-SHIFT + Q
-F’
-E
-B
-SHIFT + E
-B’
-L
-y’
-J
-y
-I
-x
-K
-x’
-O
-z
-U
-z’
+|SHIFT + D|R’|
+|A|L|
+|SHIFT + A|L’|
+|W|U|
+|SHIFT + W|U’|
+|S|D|
+|SHIFT + S|D’|
+|Q|F|
+|SHIFT + Q|F’|
+|E|B|
+|SHIFT + E|B’|
+|L|y’|
+|J|y|
+|I|x|
+|K|x’|
+|O|z|
+|U|z’|
 
