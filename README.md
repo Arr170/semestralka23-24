@@ -4,7 +4,7 @@
 Grafická hra – rubikova kostka 3x3
 
 ## Návod:
-Po spuštění aplikace se zobrazí okno s vykreslenou rubikovou kostkou a vynulovanými časomíru nad kostkou. 
+Po spuštění aplikace se zobrazí okno s vykreslenou rubikovou kostkou a vynulovanou časomíru nad kostkou. 
 
 Kostku lze uvést do zamíchaného stavu stisknutím klávesy “F”, případně vrátit do složeného stavu stisknutím klávesy “R”, vracení kostky do původního stavu taktéž vynuluje časomíru.
 
@@ -34,8 +34,8 @@ Ovládání kostky je popsano v níže uvedené tabulce, stisknutí klávesy je 
 |U|z’|
 
 
-aplikace by měla vypadat takto:
-[example](./example.png)
+### Aplikace by měla vypadat takto:
+![example](./example.png)
 
 
 
