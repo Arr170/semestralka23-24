@@ -38,15 +38,7 @@ void initGL()
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 }
 
-void renderBitmapString(GLfloat x, GLfloat y, GLfloat z, void *font, const char *string)
-{
-    const char *c;
-    glRasterPos3f(x, y, z);
-    for (c = string; *c != '\0'; c++)
-    {
-        glutBitmapCharacter(font, *c);
-    }
-}
+
 
 void renderStrokeString(GLfloat x, GLfloat y, GLfloat z, float scale, const std::string s)
 {
@@ -147,10 +139,10 @@ void scramble(int count)
     int index;
     for (int i = 0; i < count; i++)
     {
-        index = rand() % 9;
+        index = rand() % 12;//0-11
         cube.turn(moves[index]);
         display();
-        usleep(50000);
+        usleep(50000);//delay to make 
     }
     cube.get_cube().scramble_state = true;
 }
@@ -207,8 +199,8 @@ int main(int argc, char **argv)
     glutCreateWindow(title);                                  // Create window with the given title
     glutDisplayFunc(display);                                 // Register callback handler for window re-paint event
     glutReshapeFunc(reshape);                                 // Register callback handler for window re-size event
-    glutKeyboardFunc(keyboard_func_wrapper);
-    initGL();                                                 // Our own OpenGL initialization
+    glutKeyboardFunc(keyboard_func_wrapper);                  // 
+    initGL();                                                 // OpenGL initialization
     glutTimerFunc(0, timer, 0);                               // First timer call immediately
     glutMainLoop();                                           // Enter the infinite event-processing loop
     return 0;

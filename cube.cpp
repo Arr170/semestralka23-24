@@ -9,7 +9,7 @@
 using namespace std;
 
 // colors for rendering
-#define WHITE 1.0f, 1.0f, 1.0f
+#define WHITE 1.0f, 1.0f, 1.0f 
 #define YELLOW 1.0f, 1.0f, 0.0f
 #define GREEN 0.0f, 1.0f, 0.0f
 #define BLUE 0.0f, 0.0f, 1.0f
