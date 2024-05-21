@@ -1,9 +1,10 @@
 #include <string>
 #include <GL/glut.h>
+#include <time.h>
+#include <chrono>
 
 struct Color{
     GLfloat r,g,b;
-    // Color(GLfloat x, GLfloat y, GLfloat z);
 };
 
 
@@ -12,6 +13,8 @@ struct Sticker
 {
     int name;
     Color color;
+    
+
     Sticker(int n, float r, float g, float b);
 };
 
@@ -44,7 +47,10 @@ public:
 
     void rotate_face_counter(Sticker *face[3][3]);
 
-
+    bool scramble_state = false;
+    bool solving = false;
+    std::chrono::time_point<std::chrono::steady_clock> start_time;
+    std::chrono::time_point<std::chrono::steady_clock> end_time;
     Sticker *W_side[3][3] = {{}, {}, {}}; // coords [y][x]{{'W', 'W', 'W'}, {'W', 'W', 'W'}, {'W', 'W', 'W'}};
     Sticker *Y_side[3][3] = {};
     Sticker *G_side[3][3] = {};
@@ -52,6 +58,8 @@ public:
     Sticker *R_side[3][3] = {};
     Sticker *O_side[3][3] = {};
     void print_cube();
-    void turn_char(unsigned char user_move, int x, int y);
+    void turn_char(unsigned char user_move);
+    bool is_solved();
+    void reset();
 };
 
