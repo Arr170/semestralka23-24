@@ -35,5 +35,5 @@ Ovládání kostky je popsano v níže uvedené tabulce, stisknutí klávesy je 
 
 
 aplikace by měla vypadat takto:
-[example](./example.png)
+![example](./example.png)
 
