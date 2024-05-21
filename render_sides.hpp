@@ -76,7 +76,6 @@ Cube& Rendered_cube::get_cube(){
 
 void color_switch(int color)
 {
-    // std::cout<<"color code: "<<color<<'\n';
     switch (color)
     {
     case 1:

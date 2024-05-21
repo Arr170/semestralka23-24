@@ -61,7 +61,7 @@ void Cube::turn_char(unsigned char user_move)
     a .... L
     q .... F
     e .... B
-    uppercase.....counter clockwise
+    uppercase....counterclockwise
     */
     if (user_move == 'w' || user_move == 's')
     { // horizontal moves

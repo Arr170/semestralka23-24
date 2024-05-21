@@ -199,7 +199,7 @@ int main(int argc, char **argv)
     glutCreateWindow(title);                                  // Create window with the given title
     glutDisplayFunc(display);                                 // Register callback handler for window re-paint event
     glutReshapeFunc(reshape);                                 // Register callback handler for window re-size event
-    glutKeyboardFunc(keyboard_func_wrapper);                  // 
+    glutKeyboardFunc(keyboard_func_wrapper);                  // Keyboard input handler
     initGL();                                                 // OpenGL initialization
     glutTimerFunc(0, timer, 0);                               // First timer call immediately
     glutMainLoop();                                           // Enter the infinite event-processing loop
