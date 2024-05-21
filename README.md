@@ -34,6 +34,6 @@ Ovládání kostky je popsano v níže uvedené tabulce, stisknutí klávesy je 
 |U|z’|
 
 
-aplikace by měla vypadat takto:
+## aplikace by měla vypadat takto:
 ![example](./example.png)
 
